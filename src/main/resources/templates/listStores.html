@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Tiendas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Lista de Tiendas</h1>
+    </header>
+    <main>
+      <table class="table">
+        <thead class="table-dark">
+          <tr>
+            <th>#</th>
+            <th>Manager</th>
+            <th>Dirección</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="store: ${stores}">
+            <th><a th:href="@{/store/{id}(id=${store.getId()})}" th:text="${store.getId()}"></th>
+            <td th:text="${store.getManagerId()}"></td>
+            <td th:text="${store.getAddressId()}"></td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </div>
+</body>
+</html>

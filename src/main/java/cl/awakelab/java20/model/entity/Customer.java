@@ -11,31 +11,29 @@ public class Customer {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name="customer_id")
   private int id;
-  @Column(name="store_id")
-  private int storeId;
-  @Column(name="first_name")
+  @ManyToOne
+  @JoinColumn(name = "store_id", insertable = false, updatable = false)
+  private Store store;
   private String firstName;
-  @Column(name="last_name")
   private String lastName;
-  @Column(name="email")
   private String email;
-  @Column(name="address_id")
-  private int addressId;
-  @Column(name="active")
+  @ManyToOne
+  @JoinColumn(name = "address_id", insertable = false, updatable = false)
+  private Address address;
   private boolean active;
-  @Column(name="create_date")
   private Date createDate;
 
   public Customer() {
   }
 
-  public Customer(int id, int storeId, String firstName, String lastName, String email, int addressId, boolean active, Date createDate) {
+  public Customer(int id, Store store, String firstName, String lastName, String email, Address address,
+                  boolean active, Date createDate) {
     this.id = id;
-    this.storeId = storeId;
+    this.store = store;
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
-    this.addressId = addressId;
+    this.address = address;
     this.active = active;
     this.createDate = createDate;
   }
@@ -48,12 +46,12 @@ public class Customer {
     this.id = id;
   }
 
-  public int getStoreId() {
-    return storeId;
+  public Store getStoreId() {
+    return store;
   }
 
-  public void setStoreId(int storeId) {
-    this.storeId = storeId;
+  public void setStoreId(Store storeId) {
+    this.store = storeId;
   }
 
   public String getFirstName() {
@@ -80,14 +78,6 @@ public class Customer {
     this.email = email;
   }
 
-  public int getAddressId() {
-    return addressId;
-  }
-
-  public void setAddressId(int addressId) {
-    this.addressId = addressId;
-  }
-
   public boolean isActive() {
     return active;
   }
@@ -102,5 +92,20 @@ public class Customer {
 
   public void setCreateDate(Date createDate) {
     this.createDate = createDate;
+  }
+
+  public Address getAddress() {
+    return address;
+  }
+  public void setAddress(Address address) {
+    this.address = address;
+  }
+
+  public Store getStore() {
+    return store;
+  }
+
+  public void setStore(Store store) {
+    this.store = store;
   }
 }

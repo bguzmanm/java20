@@ -11,16 +11,18 @@ public class Store {
   private int id;
   @Column(name="manager_staff_id")
   private int managerId;
-  @Column(name="address_id")
-  private int addressId;
+
+  @ManyToOne
+  @JoinColumn(name="address_id")
+  private Address address;
 
   public Store() {
   }
 
-  public Store(int id, int managerId, int addressId) {
+  public Store(int id, int managerId, Address address) {
     this.id = id;
     this.managerId = managerId;
-    this.addressId = addressId;
+    this.address = address;
   }
 
   public int getId() {
@@ -39,11 +41,11 @@ public class Store {
     this.managerId = managerId;
   }
 
-  public int getAddressId() {
-    return addressId;
+  public Address getAddress() {
+    return address;
   }
 
-  public void setAddressId(int addressId) {
-    this.addressId = addressId;
+  public void setAddress(Address address) {
+    this.address = address;
   }
 }

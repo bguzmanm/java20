@@ -18,6 +18,8 @@
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Email</th>
+            <th>Dirección</th>
+            <th>Tienda</th>
             <th>Activo</th>
           </tr>
         </thead>
@@ -27,6 +29,8 @@
             <td th:text="${customer.getFirstName()}"></td>
             <td th:text="${customer.getLastName()}"></td>
             <td th:text="${customer.getEmail()}"></td>
+            <td th:text="${customer.getAddress().getAddress()}"></td>
+            <td th:text="${customer.getStore().getAddress().getAddress()}"></td>
             <td><input type="checkbox" th:checked="${customer.isActive()}"></td>
           </tr>
         </tbody>
